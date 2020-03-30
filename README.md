@@ -45,7 +45,7 @@ and blue values 0-255) separated by comma. You can optionally also magnify the r
 
 You can do everything in one step:
 
-* `python getshot.py | python pd2png.py - foo.png`
+* `./calistir.sh`
 
 License
 -------

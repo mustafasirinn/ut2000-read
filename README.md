@@ -1,4 +1,4 @@
-Python driver for UNI-T UT2000 series digital oscilloscopes
+Python driver for UNI-T UTD2202CE Osiloskop
 ===========================================================
 
 Fork from [dnet/ut2025b](https://github.com/dnet/ut2025b). [Original website](http://hsbp.org/ut2025b)

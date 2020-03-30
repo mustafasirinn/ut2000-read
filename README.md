@@ -7,7 +7,7 @@ Support
 -------
 This driver works on UTD2202CE DSO.
 
-original code tested with
+[Original code](https://github.com/graup/ut2000-read) tested with
 
 - UT2025B
 - UT2102C

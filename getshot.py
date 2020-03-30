@@ -29,19 +29,8 @@
 import usb.core
 import sys
 
-"""
-List of supported USB devices
-    vendor id, product id, description
-"""
-devices = [
-    (0x5656, 0x0832, 'UT2025B'),
-    (0x5656, 0x0834, 'UT2102C')
-]
-
-
 class Endpoint(object):
     BULK_IN = 0x82
-
 
 class ReqType(object):
     VENDOR_REQUEST = 0x40
@@ -52,14 +41,11 @@ class ReqType(object):
     CTRL_OUT = RECIPIENT_ENDPOINT | VENDOR_REQUEST | HOST_TO_DEVICE
     CTRL_IN = RECIPIENT_ENDPOINT | VENDOR_REQUEST | DEVICE_TO_HOST
 
-
-for device in devices:
-    dev = usb.core.find(idVendor=device[0], idProduct=device[1])
-    if dev:  # Found a device
-        break
+#ID 5656:0834 Uni-Trend Group Limited
+dev = usb.core.find(idVendor=0x5656, idProduct=0x0834)
 
 if dev is None:
-    print >>sys.stderr, 'USB device cannot be found, check connection'
+    print >>sys.stderr, 'Osiloskop bulunamadı. Bağlantınızı kontrol edin.'
     sys.exit(1)
 
 dev.set_configuration()
@@ -75,5 +61,5 @@ try:
         buf.tofile(sys.stdout)
     dev.ctrl_transfer(ReqType.CTRL_OUT, 177, 0xF1, 0)
 except usb.core.USBError:
-    print >>sys.stderr, 'Image transfer error, try again'
+    print >>sys.stderr, 'Görüntü transfer hatası. Tekrar deneyin.'
     sys.exit(1)
